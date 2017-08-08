@@ -130,7 +130,7 @@ class DQN:
         self.s_next = tf.placeholder(tf.float32, shape=[None, 84, 84, 4])
         self.q_target = tf.placeholder(tf.float32, shape=[None])
         self.a = tf.placeholder(tf.float32, shape=[None, self.actions])
-        self.dummy = tf.placeholder(tf.float32, shape=[1])
+        self.dummy = tf.placeholder(tf.float32)
         self.ep_reward = self.dummy * 1.0
         self.ep_losses = tf.placeholder(tf.float32, shape=[None])
         self.avg_ep_loss = tf.reduce_mean(self.ep_losses)
@@ -375,7 +375,7 @@ def main():
                 print('episode {} reward: {}, episode steps: {}, total steps: {}, epilson: {}'.format(episode, total, steps, DRL.counter,
                                                                                                       DRL.epsilon))
                 if begin_learn:
-                    summ = DRL.get_summary(np.array([total]), DRL.loss_batch)
+                    summ = DRL.get_summary(total, DRL.loss_batch)
                     DRL.loss_batch = deque()
                     DRL.writer.add_summary(summ, episode)
                 break
