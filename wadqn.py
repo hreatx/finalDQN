@@ -305,7 +305,7 @@ class DQN:
 
 
 
-TRAIN_EPISODES = 500000
+TRAIN_EPISODES = 20000
 
 def main():
     gym.envs.register(id='bo-v0', entry_point='gym.envs.atari:AtariEnv',
