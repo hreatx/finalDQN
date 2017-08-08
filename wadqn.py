@@ -162,7 +162,7 @@ class DQN:
         ###################loss tensor##################################
         self.q_mediate = tf.reduce_sum(tf.multiply(self.q_eval, self.a), 1)
         self.diff = tf.subtract(self.q_mediate, self.q_target)
-        self.squared_loss = tf.square(self.diff)
+        self.squared_loss = tf.reduce_mean(tf.square(self.diff))
         self.loss = tf.reduce_mean(self.clipped_error(self.diff))
 
         #self.loss = tf.reduce_mean(tf.squared_difference(self.q_target, self.q_mediate))
