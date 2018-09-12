@@ -1,3 +1,3 @@
 # finalDQN
-* restore.py: restore the saved model
+* restore.py: restore from the saved model
 * wadqn.py: dqn code and model saving
